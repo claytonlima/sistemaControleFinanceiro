@@ -14,9 +14,6 @@ $usuario_id = $_POST['usuario_id'];
 $usuario_id = $_POST['usuario_id'];
 
 $data_compra = $_POST['dataCompra'];
-//Formatando data para Salvar no banco;
-$data_compra = explode("-", $data_compra);
-$data_compra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
 
 if(alteraConta($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usuario_id, $data_compra)){?>
     <p class="text-success">O conta <?php echo $nome;?>, <?php echo $preco; ?> foi alterado.</p>

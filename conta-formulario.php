@@ -3,8 +3,9 @@ include ("functions/usuario/logica-usuario.php");
 
 verificaUsuarioLogado();
 
-?>
+$conta = array("nome" => "", "preco" => "", "data_compra" => "", "descricao" => "", "categoria_id" => "1", "usuario_id" => "1");
 
+?>
 
 <?php include("cabecalho.php"); ?>
 <?php include("model/categoria/categoria.php"); ?>
@@ -29,45 +30,11 @@ $( function() {
     <h1>Cadastro de Conta</h1>
     <form action="adiciona-conta.php" method="post">
         <table class="table">
-            <tr>
-                <td>Nome:</td>
-                <td><input class="form-control" type="text" name="nome"/></td>
-            </tr>    
-            <tr>
-                <td>Preço:</td>
-                <td><input class="form-control" type="number" step="any" name="preco"/></td>
-            </tr>
-            <tr>
-                <td>Data da Compra:</td>
-                <td><input class="datepicker" id="datepicker" name="dataCompra"/></td>
-            </tr>
-            <tr>
-             <td>Categorias:</td>
-                <td>
-                    <select class="form-control" name="categoria_id">
-                        <?php foreach($categorias as $categoria): ?>
-                            <option value="<?php echo $categoria['categoria_id'];?>"> <?php echo $categoria['nome'];?></option>
-                        <?php endforeach ?>
-                    </select>
-                </td> 
-            </tr>
-            <tr>
-            <td>Dono da Conta:</td>
-                <td>
-                    <select class="form-control" name="usuario_id">
-                        <?php foreach($usuarios as $usuario): ?>
-                            <option value="<?php echo $usuario['usuario_id'];?>"> <?php echo $usuario['nome'];?></option>
-                        <?php endforeach ?>
-                    </select>
-                </td> 
-            </tr>
-            <tr>
-                <td>Descricao:</td>
-                <td><textarea class="form-control" name="descricao"></textarea>
-            </tr>
-            <tr>
-                <td><button class="btn btn-primary" type="submit">Cadastrar</button></td>
-            </tr>
+            <?php include("base-produto-formulario.php"); ?>
         </table>
+    <tr>
+        <td><button class="btn btn-primary" type="submit">Cadastrar</button></td>
+    </tr>
     </form>
+    
 <?php include("rodape.php") ?>
