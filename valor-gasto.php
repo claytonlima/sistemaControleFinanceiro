@@ -1,8 +1,8 @@
-<?php include("cabecalho.php"); ?>
-<?php include("model/categoria/categoria.php"); ?>
-<?php include("model/conta/conta.php"); ?>
-<?php include("model/usuario/usuario.php"); ?>
-<?php include("conexao.php"); ?>
+<?php require_once("cabecalho.php"); ?>
+<?php require_once("model/categoria/categoria.php"); ?>
+<?php require_once("model/conta/conta.php"); ?>
+<?php require_once("model/usuario/usuario.php"); ?>
+
 <?php $categorias = listaCategorias($conexao); ?>
 
 <?php $usuarios = listaUsuarios($conexao); ?>

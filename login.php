@@ -1,6 +1,5 @@
-<?php include ("conexao.php"); ?>
-<?php include ("model/usuario/usuario.php"); ?>
-<?php include ("functions/usuario/logica-usuario.php"); ?>
+<?php require_once("model/usuario/usuario.php"); ?>
+<?php require_once("functions/usuario/logica-usuario.php"); ?>
 
 <?php
 $email = $_POST['email'];

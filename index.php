@@ -1,5 +1,5 @@
-<?php include("cabecalho.php"); ?>
-<?php include ("functions/usuario/logica-usuario.php"); ?>
+<?php require_once("cabecalho.php"); ?>
+<?php require_once("functions/usuario/logica-usuario.php"); ?>
 
 <?php if(usuarioEstaLogado()): ?>
     <p class="text-success">Você está logado(a) como <?php echo usuarioLogado(); ?></p><a href="logout.php">Deslogar</a></p>

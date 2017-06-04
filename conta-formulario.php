@@ -1,5 +1,5 @@
 <?php 
-include ("functions/usuario/logica-usuario.php");
+require_once("functions/usuario/logica-usuario.php");
 
 verificaUsuarioLogado();
 
@@ -7,10 +7,10 @@ $conta = array("nome" => "", "preco" => "", "data_compra" => "", "descricao" => 
 
 ?>
 
-<?php include("cabecalho.php"); ?>
-<?php include("model/categoria/categoria.php"); ?>
-<?php include("model/usuario/usuario.php"); ?>
-<?php include("conexao.php"); ?>
+<?php require_once("cabecalho.php"); ?>
+<?php require_once("model/categoria/categoria.php"); ?>
+<?php require_once("model/usuario/usuario.php"); ?>
+
 <?php $categorias = listaCategorias($conexao); ?>
 
 <?php $usuarios = listaUsuarios($conexao); ?>

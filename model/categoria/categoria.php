@@ -1,4 +1,6 @@
 <?php
+require_once("config/database/conexao.php");
+
 function listaCategorias($conexao)
 {
     $categorias = [];

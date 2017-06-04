@@ -20,7 +20,7 @@
       <a class="navbar-brand" href="index.php">Sistema Financeiro</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
+      <li class="dropdown"><a href="index.php">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Conta<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="conta-formulario.php">Adicionar conta</a></li>
@@ -32,6 +32,7 @@
           <li><a href="valor-gasto.php">Valores do mês</a></li>
         </ul>   
       </li>
+       <li class="dropdown"><a href="contato.php">Contato</a></li>
     </ul>
   </div>
 </nav>

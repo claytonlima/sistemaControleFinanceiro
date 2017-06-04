@@ -1,4 +1,5 @@
 <?php
+require_once("config/database/conexao.php");
 
 function buscaConta($conexao, $id)
 {
@@ -21,6 +22,8 @@ function listaContas($conexao)
 
 function insereConta($conexao, $nome, $preco, $descricao, $categoria_id, $usuario_id, $data_compra)
 {
+    $nome = mysqli_real_escape_string($conexao, $nome);
+    $descricao = mysqli_real_escape_string($conexao, $descricao);
     $query = "INSERT INTO contas (nome, preco, descricao, categoria_id, usuario_id, data_compra) VALUES ('{$nome}', $preco, '{$descricao}', {$categoria_id}, {$usuario_id}, '{$data_compra}')";
     return mysqli_query($conexao, $query);
 }

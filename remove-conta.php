@@ -1,6 +1,5 @@
-<?php include("conexao.php"); ?>
-<?php include("model/conta/conta.php"); ?>
-<?php include("functions/usuario/logica-usuario.php"); ?>
+<?php require_once("model/conta/conta.php"); ?>
+<?php require_once("functions/usuario/logica-usuario.php"); ?>
 
 <?php
 

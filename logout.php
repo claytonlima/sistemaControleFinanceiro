@@ -1,5 +1,5 @@
 <?php
-include ("functions/usuario/logica-usuario.php");
+require_once("functions/usuario/logica-usuario.php");
 
 logout();
 $_SESSION["success"] = "Deslogado com sucesso";
