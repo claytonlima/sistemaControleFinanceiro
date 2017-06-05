@@ -20,11 +20,18 @@ function listaContas($conexao)
     return $contas;
 }
 
-function insereConta($conexao, $nome, $preco, $descricao, $categoria_id, $usuario_id, $data_compra)
-{
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $descricao = mysqli_real_escape_string($conexao, $descricao);
-    $query = "INSERT INTO contas (nome, preco, descricao, categoria_id, usuario_id, data_compra) VALUES ('{$nome}', $preco, '{$descricao}', {$categoria_id}, {$usuario_id}, '{$data_compra}')";
+function insereConta($conexao, Conta $conta)
+{   
+    $nome->nome = mysqli_real_escape_string($conexao, $conta->nome);
+    $conta->preco = mysqli_real_escape_string($conexao, $conta->preco);
+    $conta->descricao = mysqli_real_escape_string($conexao, $conta->descricao);
+
+    $conta->categoria = mysqli_real_escape_string($conexao, $conta->categoria);
+    $conta->donoConta = mysqli_real_escape_string($conexao, $conta->donoConta);
+    $conta->dataCompra = mysqli_real_escape_string($conexao, $conta->dataCompra);
+
+    $query = "INSERT INTO contas (nome, preco, descricao, categoria_id, usuario_id, data_compra) VALUES ('{$conta->nome}', $conta->preco, '{$conta->descricao}', {$conta->categoria}, {$conta->donoConta}, '{$conta->dataCompra}')";
+
     return mysqli_query($conexao, $query);
 }
 

@@ -3,22 +3,26 @@
 <?php include ("cabecalho.php"); ?>
 <?php include ("functions/usuario/logica-usuario.php"); ?>
 
+<?php include ("class/Conta.php"); ?>
+
 <?php
+
+$conta = new Conta();
 
 verificaUsuarioLogado();
 
-$nome = $_POST['nome']; 
-$preco = $_POST['preco'];
-$descricao = $_POST['descricao'];
-$categoria_id = $_POST['categoria_id'];
-$usuario_id = $_POST['usuario_id'];
+$conta->nome = $_POST['nome']; 
+$conta->preco = $_POST['preco'];
+$conta->descricao = $_POST['descricao'];
+$conta->categoria = $_POST['categoria_id'];
+$conta->donoConta = $_POST['usuario_id'];
 
 $data_compra = $_POST['dataCompra'];
 //Formatando data para Salvar no banco;
 $data_compra = explode("-", $data_compra);
-$data_compra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
+$conta->dataCompra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
 
-if(insereConta($conexao, $nome, $preco, $descricao, $categoria_id, $usuario_id, $data_compra)){?>
+if(insereConta($conexao, $conta)){?>
 <?php 
     header("Location: conta-lista.php?add=true");
     die();
