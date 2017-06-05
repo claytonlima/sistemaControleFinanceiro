@@ -2,8 +2,12 @@
 <?php require_once("model/categoria/categoria.php"); ?>
 <?php require_once("model/conta/conta.php"); ?>
 <?php require_once("model/usuario/usuario.php"); ?>
+<?php require_once("functions/usuario/logica-usuario.php"); ?>
 
-<?php $categorias = listaCategorias($conexao); ?>
+<?php 
+verificaUsuarioLogado();
+
+$categorias = listaCategorias($conexao); ?>
 
 <?php $usuarios = listaUsuarios($conexao); ?>
 
