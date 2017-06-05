@@ -17,11 +17,7 @@
     </thead>    
     <?php
         
-        foreach($contas as $conta):
-
-        echo "<pre>";
-        var_dump($conta); 
-    ?>
+        foreach($contas as $conta): ?>
     <tbody>
         <tr>
             <td><?php echo $conta->nome;?></td>
