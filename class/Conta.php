@@ -1,6 +1,7 @@
 <?php
 
 class Conta{
+    public $contaId;
     public $nome;
     public $preco;
     public $dataCompra;

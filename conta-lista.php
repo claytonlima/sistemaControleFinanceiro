@@ -17,22 +17,25 @@
     </thead>    
     <?php
         
-        foreach($contas as $conta): 
+        foreach($contas as $conta):
+
+        echo "<pre>";
+        var_dump($conta); 
     ?>
     <tbody>
         <tr>
-            <td><?php echo $conta['nome'];?></td>
-            <td>R$ <?php echo $conta['preco'];?></td>
-            <td><?php echo substr($conta['descricao'], 0,40);?></td>
-            <td><?php echo $conta['categoria'];?></td>
-            <td><?php echo $conta['usuario'];?></td>
-            <td><?php echo $conta['data_compra'];?></td>
+            <td><?php echo $conta->nome;?></td>
+            <td>R$ <?php echo $conta->preco;?></td>
+            <td><?php echo substr($conta->descricao, 0,40);?></td>
+            <td><?php echo $conta->categoria->nome;?></td>
+            <td><?php echo $conta->donoConta->nome;?></td>
+            <td><?php echo $conta->dataCompra;?></td>
             <td>
-                <a class="btn btn-primary" href="conta-altera-formulario.php?id=<?php echo $conta['id']; ?>">Alterar</a>
+                <a class="btn btn-primary" href="conta-altera-formulario.php?id=<?php echo $conta->contaId; ?>">Alterar</a>
             </td>
                 <form action="remove-conta.php" method="post">
                     <td>
-                        <input type="hidden" name="id" value="<?php echo $conta['id']; ?>" />
+                        <input type="hidden" name="id" value="<?php echo $conta->id; ?>" />
                         <button class="btn btn-danger">Deletar</button>
                     </td>
                 </form>
