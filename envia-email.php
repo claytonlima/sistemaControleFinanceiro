@@ -1,6 +1,6 @@
 <?php
-require_once("class/Mensagem.php");
 require_once("lib/PHPMailer-master/PHPMailerAutoload.php");
+require_once("class/Mensagem.php");
 
 session_start();
 
@@ -9,7 +9,6 @@ $mensagem = new Mensagem();
 $mensagem->nome     = $_POST["nome"];
 $mensagem->email    = $_POST["email"];
 $mensagem->mensagem = $_POST["mensagem"];
-
 
 $mail = new PHPMailer();
 $mail->isSMTP();
