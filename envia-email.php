@@ -10,7 +10,6 @@ $mensagem->nome     = $_POST["nome"];
 $mensagem->email    = $_POST["email"];
 $mensagem->mensagem = $_POST["mensagem"];
 
-
 $mail = new PHPMailer();
 $mail->isSMTP();
 $mail->Host = 'smtps.bol.com.br';
