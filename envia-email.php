@@ -1,6 +1,6 @@
 <?php
-require_once("class/Mensagem.php");
 require_once("lib/PHPMailer-master/PHPMailerAutoload.php");
+require_once("class/Mensagem.php");
 
 session_start();
 
@@ -17,7 +17,7 @@ $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 $mail->Username = "c.beraldi@bol.com.br";
-$mail->Password = 'Vazio';
+$mail->Password = '850702';
 
 $mail->setFrom("c.beraldi@bol.com.br", "Primeiro formulário de email");
 $mail->addAddress("c.beraldi@bol.com.br");

@@ -1,23 +1,29 @@
 <?php
 require_once("config/database/conexao.php");
+require_once("class/Usuario.php");
 
 function listaUsuarios($conexao)
 {
     $usuarios = [];
     $resultado = mysqli_query($conexao,"SELECT * FROM usuarios");
-    while($usuario = mysqli_fetch_assoc($resultado))
+    while($usuario_array = mysqli_fetch_assoc($resultado))
     {
-       array_push($usuarios, $usuario);
+       $user = new Usuario();
+       $user->usuarioId = $usuario_array["usuario_id"];
+       $user->nome      = $usuario_array["nome"];
+
+       array_push($usuarios, $user);
     }
+    
     return $usuarios;
 }
 
-function buscaUsuario($conexao, $email, $senha){
-    $email = mysqli_real_escape_string($conexao, $email);
-    $senha = mysqli_real_escape_string($conexao, $senha);
-    $md5Convert = md5($senha);
+function buscaUsuario($conexao, Usuario $user){
+    $user->email = mysqli_real_escape_string($conexao, $user->email);
+    $user->senha = mysqli_real_escape_string($conexao, $user->senha);
     
-    $query = "SELECT email, senha FROM usuarios WHERE email='{$email}' AND senha='{$md5Convert}'";
+    $user->senha = md5($user->senha);
+    $query = "SELECT email, senha FROM usuarios WHERE email='{$user->email}' AND senha='{$user->senha}'";
     $resultado = mysqli_query($conexao, $query);
     $user = mysqli_fetch_assoc($resultado);
     return $user;

@@ -19,7 +19,7 @@ if(alteraConta($conexao, $conta)){?>
 <?php } else { 
     $msg = mysqli_error($conexao);
 ?>
-    <p class="text-danger">O conta <?php echo $nome; ?> não foi alterado: <?php echo $msg;?></p>
+    <p class="text-danger">O conta <?php echo $conta->nome; ?> não foi alterado: <?php echo $msg;?></p>
 <?php 
 }
 ?>

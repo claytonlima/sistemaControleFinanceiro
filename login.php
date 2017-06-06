@@ -1,11 +1,15 @@
 <?php require_once("model/usuario/usuario.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
+<?php require_once("class/Usuario.php"); ?>
 
 <?php
-$email = $_POST['email'];
-$senha = $_POST['password'];
 
-$user = buscaUsuario($conexao, $email, $senha);
+$user = new Usuario();
+
+$user->email = $_POST['email'];
+$user->senha = $_POST['password'];
+
+$user = buscaUsuario($conexao, $user);
 
 if($user != null){
     $_SESSION["success"] = "Usuario logado com sucesso";
