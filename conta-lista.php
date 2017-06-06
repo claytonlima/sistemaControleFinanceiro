@@ -2,7 +2,11 @@
 <?php require_once("model/conta/conta.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 
-<?php $contas = listaContas($conexao); ?>
+<?php 
+
+verificaUsuarioLogado();
+
+$contas = listaContas($conexao); ?>
 
 <?php if(isset($contas) && sizeof($contas) > 0): ?>
 <table class="table table-striped table-bordered">

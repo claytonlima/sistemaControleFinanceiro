@@ -1,11 +1,15 @@
 <?php
+require_once("class/Mensagem.php");
+require_once("lib/PHPMailer-master/PHPMailerAutoload.php");
+
 session_start();
 
-$nome  = $_POST["nome"];
-$email = $_POST["email"];
-$mensagem = $_POST["mensagem"];
+$mensagem = new Mensagem();
 
-require_once("lib/PHPMailer-master/PHPMailerAutoload.php");
+$mensagem->nome     = $_POST["nome"];
+$mensagem->email    = $_POST["email"];
+$mensagem->mensagem = $_POST["mensagem"];
+
 
 $mail = new PHPMailer();
 $mail->isSMTP();
@@ -19,8 +23,8 @@ $mail->Password = '850702';
 $mail->setFrom("c.beraldi@bol.com.br", "Primeiro formulário de email");
 $mail->addAddress("c.beraldi@bol.com.br");
 $mail->Subject = "Email de contato para teste";
-$mail->msgHTML("<html>De: {$nome}<br/>Email: {$email}<br/>Mensagem: {$mensagem}<br/></html>");
-$mail->AltBody = "De: {$nome}\nEmail: {$email}\nMensagem: {$mensagem}";
+$mail->msgHTML("<html>De: {$mensagem->nome}<br/>Email: {$mensagem->email}<br/>Mensagem: {$mensagem->mensagem}<br/></html>");
+$mail->AltBody = "De: {$mensagem->nome}\nEmail: {$mensagem->email}\nMensagem: {$mensagem->mensagem}";
 
 if($mail->send()){
     $_SESSION["success"] = "Mensagem enviada com sucesso";

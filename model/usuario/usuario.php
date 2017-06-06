@@ -13,8 +13,10 @@ function listaUsuarios($conexao)
 }
 
 function buscaUsuario($conexao, $email, $senha){
-    $md5Convert = md5($senha);
     $email = mysqli_real_escape_string($conexao, $email);
+    $senha = mysqli_real_escape_string($conexao, $senha);
+    $md5Convert = md5($senha);
+    
     $query = "SELECT email, senha FROM usuarios WHERE email='{$email}' AND senha='{$md5Convert}'";
     $resultado = mysqli_query($conexao, $query);
     $user = mysqli_fetch_assoc($resultado);
