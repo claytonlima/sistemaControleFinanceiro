@@ -13,11 +13,7 @@ $conta = array("nome" => "", "preco" => "", "data_compra" => "", "descricao" => 
 
 <?php $categorias = listaCategorias($conexao); ?>
 
-<?php $usuarios = listaUsuarios($conexao); 
-
-echo "<pre>";
-var_dump($usuarios);
-?>
+<?php $usuarios = listaUsuarios($conexao); ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">

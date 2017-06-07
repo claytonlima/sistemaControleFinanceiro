@@ -1,3 +1,5 @@
+
+
 <tr>
     <td>Nome:</td>
     <td><input class="form-control" type="text" name="nome" value="<?php echo $conta['nome'];?>"/></td>
@@ -27,11 +29,13 @@
 <td>Dono da Conta:</td>
     <td>
         <select class="form-control" name="usuario_id">
-            <?php foreach($usuarios as $usuario): 
-                $essaEhUsuarioSelecionado = $conta['usuario_id'] == $usuario['usuario_id'];
+            <?php 
+            foreach($usuarios as $usuario): 
+                
+                $essaEhUsuarioSelecionado = $conta['usuario_id'] == $usuario->usuarioId;
                 $selecaoUsuario = $essaEhUsuarioSelecionado ? "selected='selected'" : "";
             ?>
-                <option value="<?php echo $usuario['usuario_id'];?>" <?php echo $selecaoUsuario?>> <?php echo $usuario['nome'];?></option>
+                <option value="<?php echo $usuario->usuarioId;?>" <?php echo $selecaoUsuario?>> <?php echo $usuario->nome;?></option>
             <?php endforeach ?>
         </select>
     </td> 
