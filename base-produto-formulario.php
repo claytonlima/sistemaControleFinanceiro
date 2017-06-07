@@ -16,12 +16,12 @@
     <td>Categorias:</td>
     <td>
         <select class="form-control" name="categoria_id">
-            <?php foreach($categorias as $categoria): 
-                $essaEhCategoriaSelecionada = $conta['categoria_id'] == $categoria['categoria_id'];
+            <?php foreach($categorias as $categoria):
+                $essaEhCategoriaSelecionada = $conta['categoria_id'] == $categoria->categoriaId;
                 $selecaoUsuario = $essaEhCategoriaSelecionada ? "selected='selected'" : "";
             
             ?>
-                <option value="<?php echo $categoria['categoria_id'];?>" <?php echo $selecaoUsuario?>><?php echo $categoria['nome'];?></option>
+                <option value="<?php echo $categoria->categoriaId;?>" <?php echo $selecaoUsuario?>><?php echo $categoria->nome;?></option>
             <?php endforeach ?>
         </select>
     </td> 
