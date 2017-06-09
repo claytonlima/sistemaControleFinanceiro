@@ -20,18 +20,17 @@ $contas = listaContas($conexao); ?>
         <th colspan="2">Ações</th>
     </thead>    
     <?php
-        
-        foreach($contas as $conta): ?>
+            foreach($contas as $conta):?>
     <tbody>
         <tr>
-            <td><?php echo $conta->nome;?></td>
-            <td>R$ <?php echo $conta->preco;?></td>
+            <td><?php echo $conta->getNome();?></td>
+            <td>R$ <?php echo $conta->getPreco();?></td>
             <td><?php echo substr($conta->descricao, 0,40);?></td>
             <td><?php echo $conta->categoria->nome;?></td>
             <td><?php echo $conta->donoConta->nome;?></td>
             <td><?php echo $conta->dataCompra;?></td>
             <td>
-                <a class="btn btn-primary" href="conta-altera-formulario.php?id=<?php echo $conta->contaId; ?>">Alterar</a>
+                <a class="btn btn-primary" href="conta-altera-formulario.php?id=<?php echo $conta->getContaId(); ?>">Alterar</a>
             </td>
                 <form action="remove-conta.php" method="post">
                     <td>
