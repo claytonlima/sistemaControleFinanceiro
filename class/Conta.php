@@ -35,32 +35,37 @@ class Conta{
     public function getPreco(){
         return $this->preco;
     }
-    
-    public function setDataCompra($dataCompra){
-        $this->dataCompra = $dataCompra;
-
-    }
-
-    public function getDataCompra(){
-        return $this->dataCompra;
-    }
-/*
-    public function setDonoConta($donoConta){
-        $this->donoConta = $donoConta;
-
-    }
-
-    public function getDonoConta(){
-        return $this->donoConta;
-    }
 
     public function setDescricao($descricao){
         $this->descricao = $descricao;
-
     }
 
     public function getDescricao(){
         return $this->descricao;
     }
-    */
+
+    public function setDataCompra($dataCompra){
+        $this->dataCompra = $dataCompra;
+    }
+
+    public function getDataCompra(){
+        return $this->dataCompra;
+    }
+
+    public function setCategoria($categoria){
+        $this->categoria = $categoria;
+    }
+
+    public function getCategoria(){
+        return $this->categoria;
+    }
+
+    public function setDonoConta($donoConta){
+        $this->donoConta = $donoConta;
+    }
+
+    public function getDonoConta(){
+        return $this->donoConta;
+    }
+  
 }
