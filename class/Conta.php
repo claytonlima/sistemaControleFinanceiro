@@ -5,13 +5,12 @@ class Conta{
     public $nome;
     public $preco;
     public $dataCompra;
+    public $descricao;
     public $categoria;
     public $usuario;
-    public $descricao;
-
+    
     public function setContaId($contaId){
         $this->contaId = $contaId;
-
     }
 
     public function getContaId(){
@@ -20,7 +19,6 @@ class Conta{
 
     public function setNome($nome){
         $this->nome = $nome;
-
     }
 
     public function getNome(){
@@ -29,7 +27,6 @@ class Conta{
     
     public function setPreco($preco){
         $this->preco = $preco;
-
     }
 
     public function getPreco(){

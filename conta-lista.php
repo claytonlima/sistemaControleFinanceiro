@@ -19,8 +19,7 @@ $contas = listaContas($conexao); ?>
         <th>Data da compra</th>
         <th colspan="2">Ações</th>
     </thead>    
-    <?php
-            foreach($contas as $conta):?>
+    <?php foreach($contas as $conta): ?>
     <tbody>
         <tr>
             <td><?php echo $conta->getNome();?></td>
