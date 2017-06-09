@@ -22,15 +22,19 @@ function listaContas($conexao)
        $categoria = new Categoria();
        $usuario = new Usuario();
 
+       $categoria->categoriaId = $conta_array["categoria_id"];
        $categoria->nome = $conta_array["categoria"];
+       
+       $usuario->usuarioId = $conta_array["usuario_id"];
        $usuario->nome = $conta_array["usuario"];
 
        $conta->contaId = $conta_array["id"];
        $conta->nome =  $conta_array["nome"];
        $conta->preco = $conta_array["preco"];
        $conta->descricao = $conta_array["descricao"];
-       $conta->donoConta = $usuario;
        $conta->dataCompra = $conta_array["data_compra"];
+       
+       $conta->usuario = $usuario;
        $conta->categoria = $categoria;
 
        array_push($contas, $conta);

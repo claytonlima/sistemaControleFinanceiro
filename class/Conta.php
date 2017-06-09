@@ -6,7 +6,7 @@ class Conta{
     public $preco;
     public $dataCompra;
     public $categoria;
-    public $donoConta;
+    public $usuario;
     public $descricao;
 
     public function setContaId($contaId){
@@ -60,12 +60,12 @@ class Conta{
         return $this->categoria;
     }
 
-    public function setDonoConta($donoConta){
-        $this->donoConta = $donoConta;
+    public function setUsuario($usuario){
+        $this->donoConta = $usuario;
     }
 
-    public function getDonoConta(){
-        return $this->donoConta;
+    public function getUsuario(){
+        return $this->usuario;
     }
   
 }

@@ -27,7 +27,7 @@ $contas = listaContas($conexao); ?>
             <td>R$ <?php echo $conta->getPreco();?></td>
             <td><?php echo substr($conta->getDescricao(), 0,40);?></td>
             <td><?php echo $conta->getCategoria()->nome;?></td>
-            <td><?php echo $conta->getDonoConta()->nome;?></td>
+            <td><?php echo $conta->getUsuario()->nome;?></td>
             <td><?php echo $conta->getDataCompra();?></td>
             <td>
                 <a class="btn btn-primary" href="conta-altera-formulario.php?id=<?php echo $conta->getContaId(); ?>">Alterar</a>
