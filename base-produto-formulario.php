@@ -35,7 +35,7 @@
                 $essaEhUsuarioSelecionado = $conta['usuario_id'] == $usuario->usuarioId;
                 $selecaoUsuario = $essaEhUsuarioSelecionado ? "selected='selected'" : "";
             ?>
-                <option value="<?php echo $usuario->usuarioId;?>" <?php echo $selecaoUsuario?>> <?php echo $usuario->nome;?></option>
+                <option value="<?php echo $usuario->getUsuarioId();?>" <?php echo $selecaoUsuario?>> <?php echo $usuario->getNome();?></option>
             <?php endforeach ?>
         </select>
     </td> 
