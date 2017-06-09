@@ -17,11 +17,11 @@
     <td>
         <select class="form-control" name="categoria_id">
             <?php foreach($categorias as $categoria):
-                $essaEhCategoriaSelecionada = $conta['categoria_id'] == $categoria->categoriaId;
+                $essaEhCategoriaSelecionada = $conta['categoria_id'] == $categoria->getCategoriaId();
                 $selecaoUsuario = $essaEhCategoriaSelecionada ? "selected='selected'" : "";
             
             ?>
-                <option value="<?php echo $categoria->categoriaId;?>" <?php echo $selecaoUsuario?>><?php echo $categoria->nome;?></option>
+                <option value="<?php echo $categoria->categoriaId;?>" <?php echo $selecaoUsuario?>><?php echo $categoria->getNome();?></option>
             <?php endforeach ?>
         </select>
     </td> 
@@ -32,7 +32,7 @@
             <?php 
             foreach($usuarios as $usuario): 
                 
-                $essaEhUsuarioSelecionado = $conta['usuario_id'] == $usuario->usuarioId;
+                $essaEhUsuarioSelecionado = $conta['usuario_id'] == $usuario->getUsuarioId();
                 $selecaoUsuario = $essaEhUsuarioSelecionado ? "selected='selected'" : "";
             ?>
                 <option value="<?php echo $usuario->getUsuarioId();?>" <?php echo $selecaoUsuario?>> <?php echo $usuario->getNome();?></option>
