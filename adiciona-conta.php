@@ -5,20 +5,29 @@
 
 <?php
 
-$conta = new Conta();
+
+
+$categoria = new Categoria();
+$categoria->setCategoriaId($_POST['categoria_id']);
+
+$usuario = new Usuario();
+$usuario->setUsuarioId($_POST['usuario_id']);
 
 verificaUsuarioLogado();
 
-$conta->nome = $_POST['nome']; 
-$conta->preco = $_POST['preco'];
-$conta->descricao = $_POST['descricao'];
-$conta->categoria = $_POST['categoria_id'];
-$conta->donoConta = $_POST['usuario_id'];
+
+
+$conta = new Conta();
+$conta->setNome($_POST['nome']); 
+$conta->setPreco($_POST['preco']);
+$conta->setDescricao($_POST['descricao']);
+$conta->setCategoria($categoria);
+$conta->setUsuario($usuario);
 
 $data_compra = $_POST['dataCompra'];
 //Formatando data para Salvar no banco;
 $data_compra = explode("-", $data_compra);
-$conta->dataCompra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
+$conta->setDataCompra($data_compra[2]."-".$data_compra[1]."-".$data_compra[0]);
 
 if(insereConta($conexao, $conta)){?>
 <?php 
@@ -27,7 +36,7 @@ if(insereConta($conexao, $conta)){?>
 } else { 
     $msg = mysqli_error($conexao);
 ?>
-    <p class="text-danger">A conta <?php echo $nome; ?> não foi adicionada: <?php echo $msg;?></p>
+    <p class="text-danger">A conta <?php echo $conta->getNome(); ?> não foi adicionada: <?php echo $msg;?></p>
 <?php 
 }
 ?>

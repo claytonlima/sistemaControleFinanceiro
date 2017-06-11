@@ -58,7 +58,7 @@ class Conta{
     }
 
     public function setUsuario($usuario){
-        $this->donoConta = $usuario;
+        $this->usuario = $usuario;
     }
 
     public function getUsuario(){
