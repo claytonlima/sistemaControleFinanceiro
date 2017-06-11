@@ -8,6 +8,16 @@ class Conta{
     Private $descricao;
     public  $categoria;
     public  $usuario;
+
+    function __construct($contaId, $nome, $preco, $dataCompra, $descricao, Categoria $categoria, Usuario $usuario){
+        $this->contaId = $contaId;
+        $this->nome = $nome;
+        $this->preco = $preco;
+        $this->dataCompra = $dataCompra;
+        $this->descricao = $descricao;
+        $this->categoria = $categoria;
+        $this->usuario = $usuario;
+    }
     
     public function setContaId($contaId){
         $this->contaId = $contaId;

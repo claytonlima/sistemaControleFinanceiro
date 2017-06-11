@@ -19,7 +19,6 @@ function listaContas($conexao)
     
     while($conta_array = mysqli_fetch_assoc($resultado))
     {
-       $conta = new Conta();
        $categoria = new Categoria();
        $usuario = new Usuario();
 
@@ -29,31 +28,31 @@ function listaContas($conexao)
        $usuario->setUsuarioId($conta_array["usuario_id"]);
        $usuario->setNome($conta_array["usuario"]);
 
-       $conta->setContaId($conta_array["id"]);
-       $conta->setNome($conta_array["nome"]);
-       $conta->setPreco($conta_array["preco"]);
-       $conta->setDescricao($conta_array["descricao"]);
-       $conta->setDataCompra($conta_array["data_compra"]);
+       $contaId = $conta_array["id"];
+       $nome = $conta_array["nome"];
+       $preco = $conta_array["preco"];
+       $descricao = $conta_array["descricao"];
+       $dataCompra = $conta_array["data_compra"];
        
-       $conta->usuario = $usuario;
-       $conta->categoria = $categoria;
+       $conta = new Conta($contaId , $nome, $preco, $dataCompra, $descricao,  $categoria, $usuario);
 
-       array_push($contas, $conta);
+        array_push($contas, $conta);
     }
     return $contas;
 }
 
 function insereConta($conexao, Conta $conta)
-{   
-    $conta->setNome(mysqli_real_escape_string($conexao, $conta->getNome()));
-    $conta->setPreco(mysqli_real_escape_string($conexao, $conta->getPreco()));
-    $conta->setDescricao(mysqli_real_escape_string($conexao, $conta->getDescricao()));
+{
 
-    $conta->setCategoria(mysqli_real_escape_string($conexao, $conta->getCategoria()->categoriaId));
-    $conta->setUsuario(mysqli_real_escape_string($conexao, $conta->getUsuario()->usuarioId));
-    $conta->setDataCompra(mysqli_real_escape_string($conexao, $conta->getDataCompra()));
+    $nome = mysqli_real_escape_string($conexao, $conta->getNome());
+    $preco = mysqli_real_escape_string($conexao, $conta->getPreco());
+    $descricao = mysqli_real_escape_string($conexao, $conta->getDescricao());
 
-    $query = "INSERT INTO contas (nome, preco, descricao, categoria_id, usuario_id, data_compra) VALUES ('{$conta->getNome()}', {$conta->getPreco()}, '{$conta->getDescricao()}', {$conta->getCategoria()}, {$conta->getUsuario()}, '{$conta->getDataCompra()}')";
+    $categoria = mysqli_real_escape_string($conexao, $conta->getCategoria()->categoriaId);
+    $usuario = mysqli_real_escape_string($conexao, $conta->getUsuario()->usuarioId);
+    $dataCompra = mysqli_real_escape_string($conexao, $conta->getDataCompra());
+
+    $query = "INSERT INTO contas (nome, preco, descricao, categoria_id, usuario_id, data_compra) VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usuario}, '{$dataCompra}')";
 
     return mysqli_query($conexao, $query);
 }

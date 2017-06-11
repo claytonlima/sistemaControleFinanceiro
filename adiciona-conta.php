@@ -4,9 +4,6 @@
 <?php require_once("class/Conta.php"); ?>
 
 <?php
-
-
-
 $categoria = new Categoria();
 $categoria->setCategoriaId($_POST['categoria_id']);
 
@@ -15,19 +12,16 @@ $usuario->setUsuarioId($_POST['usuario_id']);
 
 verificaUsuarioLogado();
 
+$nome = $_POST['nome'];
+$preco = $_POST['preco'];
+$descricao = $_POST['descricao'];
 
-
-$conta = new Conta();
-$conta->setNome($_POST['nome']); 
-$conta->setPreco($_POST['preco']);
-$conta->setDescricao($_POST['descricao']);
-$conta->setCategoria($categoria);
-$conta->setUsuario($usuario);
-
-$data_compra = $_POST['dataCompra'];
 //Formatando data para Salvar no banco;
+$data_compra = $_POST['dataCompra'];
 $data_compra = explode("-", $data_compra);
-$conta->setDataCompra($data_compra[2]."-".$data_compra[1]."-".$data_compra[0]);
+$data_compra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
+
+$conta = new Conta($nome, $preco, $data_compra, $descricao, $categoria, $usuario);
 
 if(insereConta($conexao, $conta)){?>
 <?php 
