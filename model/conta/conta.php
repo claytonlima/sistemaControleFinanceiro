@@ -16,23 +16,24 @@ function listaContas($conexao)
 {
     $contas = [];
     $resultado = mysqli_query($conexao,"SELECT c.*, cat.nome AS categoria, u.nome AS usuario FROM contas AS c INNER JOIN categorias AS cat ON (cat.categoria_id = c.categoria_id) INNER JOIN usuarios AS u ON (u.usuario_id = c.usuario_id)");
+    
     while($conta_array = mysqli_fetch_assoc($resultado))
     {
        $conta = new Conta();
        $categoria = new Categoria();
        $usuario = new Usuario();
 
-       $categoria->categoriaId = $conta_array["categoria_id"];
-       $categoria->nome = $conta_array["categoria"];
+       $categoria->setCategoriaId($conta_array["categoria_id"]);
+       $categoria->setNome($conta_array["categoria"]);
        
-       $usuario->usuarioId = $conta_array["usuario_id"];
-       $usuario->nome = $conta_array["usuario"];
+       $usuario->setUsuarioId($conta_array["usuario_id"]);
+       $usuario->setNome($conta_array["usuario"]);
 
-       $conta->contaId = $conta_array["id"];
-       $conta->nome =  $conta_array["nome"];
-       $conta->preco = $conta_array["preco"];
-       $conta->descricao = $conta_array["descricao"];
-       $conta->dataCompra = $conta_array["data_compra"];
+       $conta->setContaId($conta_array["id"]);
+       $conta->setNome($conta_array["nome"]);
+       $conta->setPreco($conta_array["preco"]);
+       $conta->setDescricao($conta_array["descricao"]);
+       $conta->setDataCompra($conta_array["data_compra"]);
        
        $conta->usuario = $usuario;
        $conta->categoria = $categoria;

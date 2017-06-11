@@ -1,13 +1,13 @@
 <?php
 
 class Conta{
-    public $contaId;
-    public $nome;
-    public $preco;
-    public $dataCompra;
-    public $descricao;
-    public $categoria;
-    public $usuario;
+    Private $contaId;
+    Private $nome;
+    Private $preco;
+    Private $dataCompra;
+    Private $descricao;
+    public  $categoria;
+    public  $usuario;
     
     public function setContaId($contaId){
         $this->contaId = $contaId;

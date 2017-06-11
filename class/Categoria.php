@@ -1,8 +1,8 @@
 <?php
 
 class Categoria{
-    public $categoriaId;
-    public $nome;
+    public  $categoriaId;
+    public  $nome;
 
     public function setCategoriaId($categoriaId){
       $this->categoriaId = $categoriaId;
