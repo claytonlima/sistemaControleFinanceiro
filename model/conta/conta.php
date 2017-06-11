@@ -73,9 +73,9 @@ function alteraConta($conexao, Conta $conta)
     return mysqli_query($conexao, $query);
 }
 
-function removeConta($conexao, $id)
+function removeConta($conexao, $contaId)
 {
-    $query = "DELETE FROM contas WHERE id={$id}";
+    $query = "DELETE FROM contas WHERE id={$contaId}";
     return mysqli_query($conexao, $query);
 }
 
