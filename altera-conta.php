@@ -4,22 +4,26 @@
 
 <?php
 
-$conta = new Conta();
+$usuario = new Usuario();
+$usuario->setUsuarioId($_POST['usuario_id']);
 
-$conta->contaId = $_POST['id'];
-$conta->nome = $_POST['nome']; 
-$conta->preco = $_POST['preco'];
-$conta->descricao = $_POST['descricao'];
-$conta->categoria = $_POST['categoria_id'];
-$conta->donoConta = $_POST['usuario_id'];
-$conta->dataCompra = $_POST['dataCompra'];
+$categoria = new Categoria();
+$categoria->setCategoriaId($_POST['categoria_id']);
+
+$contaId = trim($_POST['id']);
+$nome = trim($_POST['nome']);
+$preco = trim($_POST['preco']);
+$descricao = trim($_POST['descricao']);
+$dataCompra = trim($_POST['dataCompra']);
+
+$conta = new Conta($contaId, $nome, $preco, $dataCompra, $descricao, $categoria, $usuario);
 
 if(alteraConta($conexao, $conta)){?>
-    <p class="text-success">O conta <?php echo $conta->nome;?>, <?php echo $conta->preco; ?> foi alterado.</p>
+    <p class="text-success">O conta <?php echo $conta->getNome();?>, <?php echo $conta->getPreco(); ?> foi alterado.</p>
 <?php } else { 
     $msg = mysqli_error($conexao);
 ?>
-    <p class="text-danger">O conta <?php echo $conta->nome; ?> não foi alterado: <?php echo $msg;?></p>
+    <p class="text-danger">O conta <?php echo $conta->getNome(); ?> não foi alterado: <?php echo $msg;?></p>
 <?php 
 }
 ?>

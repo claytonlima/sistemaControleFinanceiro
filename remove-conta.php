@@ -3,7 +3,7 @@
 
 <?php
 
-$id = $_POST['id'];
+$id = trim($_POST['id']);
 removeConta($conexao, $id);
 $_SESSION["success"] = "Conta removida com sucesso";
 header("Location: conta-lista.php");

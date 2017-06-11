@@ -59,18 +59,17 @@ function insereConta($conexao, Conta $conta)
 
 function alteraConta($conexao, Conta $conta)
 {
+    $contaId = mysqli_real_escape_string($conexao, $conta->getContaId());
+    $nome = mysqli_real_escape_string($conexao, $conta->getPreco());
+    $preco = mysqli_real_escape_string($conexao, $conta->getPreco());
+    $descricao = mysqli_real_escape_string($conexao, $conta->getDescricao());
 
-    $conta->contaId = mysqli_real_escape_string($conexao, $conta->contaId);
-    $conta->nome = mysqli_real_escape_string($conexao, $conta->nome);
-    $conta->preco = mysqli_real_escape_string($conexao, $conta->preco);
-    $conta->descricao = mysqli_real_escape_string($conexao, $conta->descricao);
+    $categoria = mysqli_real_escape_string($conexao, $conta->getCategoria()->categoriaId);
+    $usuario = mysqli_real_escape_string($conexao, $conta->getUsuario()->usuarioId);
+    $dataCompra = mysqli_real_escape_string($conexao, $conta->getDataCompra());
 
-    $conta->categoria = mysqli_real_escape_string($conexao, $conta->categoria);
-    $conta->donoConta = mysqli_real_escape_string($conexao, $conta->donoConta);
-    $conta->dataCompra = mysqli_real_escape_string($conexao, $conta->dataCompra);
+    $query = "UPDATE contas SET nome='{$nome}', preco={$preco}, descricao='{$descricao}', categoria_id={$categoria}, usuario_id={$usuario}, data_compra='{$dataCompra}' WHERE id = '{$contaId}'";
 
-    $query = "UPDATE contas SET nome='{$conta->nome}', preco={$conta->preco}, descricao='{$conta->descricao}', categoria_id={$conta->categoria}, usuario_id={$conta->donoConta}, data_compra='{$conta->dataCompra}' WHERE id = '{$conta->contaId}'";
-    
     return mysqli_query($conexao, $query);
 }
 
