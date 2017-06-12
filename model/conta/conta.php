@@ -36,7 +36,7 @@ function listaContas($conexao)
        
        $conta = new Conta($contaId , $nome, $preco, $dataCompra, $descricao,  $categoria, $usuario);
 
-        array_push($contas, $conta);
+       array_push($contas, $conta);
     }
     return $contas;
 }

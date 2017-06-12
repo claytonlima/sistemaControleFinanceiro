@@ -74,5 +74,10 @@ class Conta{
     public function getUsuario(){
         return $this->usuario;
     }
-  
+
+    function __toString()
+    {
+        return "Id, ".$this->contaId." Nome, ".$this->nome.", Preco ,".$this->preco."Descrição, ".$this->descricao.", Categoria".$this->categoria." Usuario".$this->usuario;
+    }
+
 }

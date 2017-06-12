@@ -2,7 +2,7 @@
 <?php require_once("model/conta/conta.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 
-<?php 
+<?php
 
 verificaUsuarioLogado();
 
