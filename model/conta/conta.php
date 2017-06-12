@@ -1,8 +1,5 @@
 <?php
 require_once("config/database/conexao.php");
-require_once("class/Conta.php");
-require_once("class/Categoria.php");
-require_once("class/Usuario.php");
 
 function buscaConta($conexao, $id)
 {

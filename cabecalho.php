@@ -1,6 +1,12 @@
 <?php 
   error_reporting(E_ALL ^ E_NOTICE);
-  include ("functions/alerta/alert-mensage.php"); 
+  include ("functions/alerta/alert-mensage.php");
+  
+  function carregaClasse($nomeDaClasse) {
+    require_once("class/".$nomeDaClasse.".php");
+} 
+
+  spl_autoload_register("carregaClasse");
 ?>
 
 <html>
