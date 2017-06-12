@@ -16,7 +16,8 @@ $preco = trim($_POST['preco']);
 $descricao = trim($_POST['descricao']);
 $dataCompra = trim($_POST['dataCompra']);
 
-$conta = new Conta($contaId, $nome, $preco, $dataCompra, $descricao, $categoria, $usuario);
+$conta = new Conta($nome, $preco, $dataCompra, $descricao, $categoria, $usuario);
+$conta->setContaId($contaId);
 
 if(alteraConta($conexao, $conta)){?>
     <p class="text-success">O conta <?php echo $conta->getNome();?>, <?php echo $conta->getPreco(); ?> foi alterado.</p>

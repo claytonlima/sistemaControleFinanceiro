@@ -21,7 +21,7 @@ $data_compra = $_POST['dataCompra'];
 $data_compra = explode("-", $data_compra);
 $data_compra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
 
-$conta = new Conta($contaId = null, $nome, $preco, $data_compra, $descricao, $categoria, $usuario);
+$conta = new Conta($nome, $preco, $data_compra, $descricao, $categoria, $usuario);
 
 if(insereConta($conexao, $conta)){?>
 <?php 

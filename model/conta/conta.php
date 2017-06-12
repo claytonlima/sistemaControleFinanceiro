@@ -34,8 +34,9 @@ function listaContas($conexao)
        $descricao = $conta_array["descricao"];
        $dataCompra = $conta_array["data_compra"];
        
-       $conta = new Conta($contaId , $nome, $preco, $dataCompra, $descricao,  $categoria, $usuario);
-
+       $conta = new Conta($nome, $preco, $dataCompra, $descricao,  $categoria, $usuario);
+       $conta->setContaId($contaId);
+       
        array_push($contas, $conta);
     }
     return $contas;
@@ -43,7 +44,7 @@ function listaContas($conexao)
 
 function insereConta($conexao, Conta $conta)
 {
-
+    
     $nome = mysqli_real_escape_string($conexao, $conta->getNome());
     $preco = mysqli_real_escape_string($conexao, $conta->getPreco());
     $descricao = mysqli_real_escape_string($conexao, $conta->getDescricao());
