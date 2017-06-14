@@ -28,7 +28,7 @@
     <ul class="nav navbar-nav">
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Conta<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/conta-formulario.php">Adicionar conta</a></li>
+          <li><a href="./conta-formulario.php">Adicionar conta</a></li>
           <li><a href="./conta-lista.php">Listar contas</a></li>
         </ul>
       </li>
