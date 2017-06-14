@@ -1,5 +1,5 @@
 <?php
-require_once("config/database/conexao.php");
+require_once(__DIR__."/../../config/database/conexao.php");
 
 function buscaConta($conexao, $id)
 {

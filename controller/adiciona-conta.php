@@ -1,6 +1,6 @@
-<?php require_once ("model/conta/conta.php"); ?>
-<?php require_once ("cabecalho.php"); ?>
-<?php require_once ("functions/usuario/logica-usuario.php"); ?>
+<?php require_once (__DIR__."/../model/conta/conta.php"); ?>
+<?php require_once (__DIR__."/../cabecalho.php"); ?>
+<?php require_once (__DIR__."/../functions/usuario/logica-usuario.php"); ?>
 
 <?php
 $categoria = new Categoria();
@@ -24,7 +24,7 @@ $conta = new Conta($nome, $preco, $data_compra, $descricao, $categoria, $usuario
 
 if(insereConta($conexao, $conta)){?>
 <?php 
-    header("Location: conta-lista.php?add=true");
+    header("Location: ../conta-lista.php?add=true");
     die();
 } else { 
     $msg = mysqli_error($conexao);
@@ -34,4 +34,4 @@ if(insereConta($conexao, $conta)){?>
 }
 ?>
 
-<?php include ("rodape.php"); ?>
+<?php require_once(__DIR__."rodape.php"); ?>

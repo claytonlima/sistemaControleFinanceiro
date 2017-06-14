@@ -1,5 +1,4 @@
 <?php include("cabecalho.php"); ?>
-<?php include("conexao.php"); ?>
 <?php include("model/categoria/categoria.php"); ?>
 <?php include("model/conta/conta.php"); ?>
 <?php include("model/usuario/usuario.php"); ?>
@@ -26,7 +25,7 @@ $( function() {
 </script>
 
     <h1>Formulário de alteração de Conta</h1>
-    <form action="altera-conta.php" method="post">
+    <form action="controller/altera-conta.php" method="post">
         <input type="hidden" name="id" value="<?php echo $conta['id'];?>"/>
         <table class="table">
             <?php include("base-produto-formulario.php"); ?>

@@ -1,5 +1,5 @@
-<?php require_once ("cabecalho.php"); ?>
-<?php require_once ("model/conta/conta.php"); ?>
+<?php require_once (__DIR__."/../cabecalho.php"); ?>
+<?php require_once (__DIR__."/../model/conta/conta.php"); ?>
 
 <?php
 
@@ -28,4 +28,4 @@ if(alteraConta($conexao, $conta)){?>
 }
 ?>
 
-<?php include("rodape.php");
+<?php require_once(__DIR__."/../rodape.php");

@@ -31,7 +31,7 @@ $contas = listaContas($conexao); ?>
             <td>
                 <a class="btn btn-primary" href="conta-altera-formulario.php?id=<?php echo $conta->getContaId(); ?>">Alterar</a>
             </td>
-                <form action="remove-conta.php" method="post">
+                <form action="controller/remove-conta.php" method="post">
                     <td>
                         <input type="hidden" name="id" value="<?php echo $conta->getContaId(); ?>" />
                         <button class="btn btn-danger">Deletar</button>

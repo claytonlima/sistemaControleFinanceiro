@@ -29,7 +29,7 @@ $( function() {
 </script>
 
     <h1>Cadastro de Conta</h1>
-    <form action="adiciona-conta.php" method="post">
+    <form action="controller/adiciona-conta.php" method="post">
         <table class="table">
             <?php include("base-produto-formulario.php"); ?>
         </table>
