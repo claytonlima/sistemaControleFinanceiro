@@ -22,7 +22,9 @@ $data_compra = $data_compra[2]."-".$data_compra[1]."-".$data_compra[0];
 
 $conta = new Conta($nome, $preco, $data_compra, $descricao, $categoria, $usuario);
 
-if(insereConta($conexao, $conta)){?>
+$contaDao = new ContaDao($conexao);
+
+if($contaDao->insereConta($conta)){?>
 <?php 
     header("Location: ../conta-lista.php?add=true");
     die();
@@ -34,4 +36,4 @@ if(insereConta($conexao, $conta)){?>
 }
 ?>
 
-<?php require_once(__DIR__."rodape.php"); ?>
+<?php require_once(__DIR__."/../rodape.php"); ?>

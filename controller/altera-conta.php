@@ -18,7 +18,9 @@ $dataCompra = trim($_POST['dataCompra']);
 $conta = new Conta($nome, $preco, $dataCompra, $descricao, $categoria, $usuario);
 $conta->setContaId($contaId);
 
-if(alteraConta($conexao, $conta)){?>
+$contaDao = new ContaDao($conexao);
+
+if($contaDao->alteraConta($conta)){?>
     <p class="text-success">O conta <?php echo $conta->getNome();?>, <?php echo $conta->getPreco(); ?> foi alterado.</p>
 <?php } else { 
     $msg = mysqli_error($conexao);

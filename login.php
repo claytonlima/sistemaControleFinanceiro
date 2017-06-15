@@ -9,7 +9,8 @@ $user = new Usuario();
 $user->email = $_POST['email'];
 $user->senha = $_POST['password'];
 
-$user = buscaUsuario($conexao, $user);
+$usuarioDao = new UsuarioDao($conexao);
+$user = $usuarioDao->buscaUsuario($user);
 
 if($user != null){
     $_SESSION["success"] = "Usuario logado com sucesso";

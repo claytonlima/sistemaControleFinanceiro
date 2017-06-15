@@ -11,9 +11,13 @@ $conta = array("nome" => "", "preco" => "", "data_compra" => "", "descricao" => 
 <?php require_once("model/categoria/categoria.php"); ?>
 <?php require_once("model/usuario/usuario.php"); ?>
 
-<?php $categorias = listaCategorias($conexao); ?>
+<?php
+$categoriaDao = new CategoriaDao($conexao);
+$categorias = $categoriaDao->listaCategorias(); ?>
 
-<?php $usuarios = listaUsuarios($conexao); ?>
+<?php
+$usuarioDao = new UsuarioDao($conexao);
+$usuarios = $usuarioDao->listaUsuarios(); ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">

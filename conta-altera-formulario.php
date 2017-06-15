@@ -3,12 +3,15 @@
 <?php include("model/conta/conta.php"); ?>
 <?php include("model/usuario/usuario.php"); ?>
 
-<?php 
-$id = $_GET['id'];
-$conta = buscaConta($conexao, $id);
+<?php
+$contaDao = new ContaDao($conexao);
+$conta = $contaDao->buscaConta(trim($_GET['id']));
 
-$categorias = listaCategorias($conexao);
-$usuarios = listaUsuarios($conexao); 
+$categoriaDao = new CategoriaDao($conexao);
+$categorias = $categoriaDao->listaCategorias();
+
+$usuarioDao = new UsuarioDao($conexao);
+$usuarios = $usuarioDao->listaUsuarios();
 ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

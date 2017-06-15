@@ -3,10 +3,10 @@
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 
 <?php
-
 verificaUsuarioLogado();
 
-$contas = listaContas($conexao); ?>
+$contaDao = new ContaDao($conexao);
+$contas = $contaDao->listaContas(); ?>
 
 <?php if(isset($contas) && sizeof($contas) > 0): ?>
 <table class="table table-striped table-bordered">
