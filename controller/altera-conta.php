@@ -1,6 +1,4 @@
 <?php require_once (__DIR__."/../cabecalho.php"); ?>
-<?php require_once (__DIR__."/../model/conta/conta.php"); ?>
-
 <?php
 
 $usuario = new Usuario();

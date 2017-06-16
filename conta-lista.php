@@ -1,11 +1,10 @@
 <?php require_once("cabecalho.php"); ?>
-<?php require_once("model/conta/conta.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 
 <?php
 verificaUsuarioLogado();
 
-$contaDao = new ContaDao($conexao);
+$contaDao = new ContaDao();
 $contas = $contaDao->listaContas(); ?>
 
 <?php if(isset($contas) && sizeof($contas) > 0): ?>

@@ -1,6 +1,4 @@
 <?php
-require_once("config/database/conexao.php");
-
 function listaUsuarios($conexao)
 {
     $usuarios = [];

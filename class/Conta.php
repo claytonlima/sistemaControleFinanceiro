@@ -11,7 +11,7 @@ class Conta{
 
     function __construct($nome, $preco, $dataCompra, $descricao, Categoria $categoria, Usuario $usuario){
         $this->nome = $nome;
-        $this->preco = $preco;
+        $this->preco = (double)$preco;
         $this->dataCompra = $dataCompra;
         $this->descricao = $descricao;
         $this->categoria = $categoria;

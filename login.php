@@ -1,10 +1,9 @@
-<?php require_once("model/usuario/usuario.php"); ?>
+<?php require_once("config/database/conexao.php"); ?>
 <?php require_once("cabecalho.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 <?php require_once("class/Usuario.php"); ?>
 
 <?php
-
 $user = new Usuario();
 
 $user->email = $_POST['email'];
