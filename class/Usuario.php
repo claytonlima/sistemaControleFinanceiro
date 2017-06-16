@@ -30,7 +30,7 @@ class Usuario{
       return $this->email;
     }
 
-    public function setSenha(){
+    public function setSenha($senha){
       $this->senha = $senha;
     }
 
