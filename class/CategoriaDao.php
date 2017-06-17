@@ -2,22 +2,20 @@
 
 class CategoriaDao
 {
-    private $conexao;
-
-    function __construct($conexao)
-    {
-        $this->conexao = $conexao;
-    }
-
     public function listaCategorias()
     {
+        $pdo = Conexao::getInstance();
+
+        $query = "SELECT * FROM categorias";
+        $result = $pdo->query($query);
+        $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
+
         $categorias = [];
-        $resultado = mysqli_query($this->conexao,"SELECT * FROM categorias");
-        while($categoria_array = mysqli_fetch_assoc($resultado))
+        foreach($rows as $row)
         {
             $categoria = new Categoria();
-            $categoria->categoriaId = $categoria_array["categoria_id"];
-            $categoria->nome = $categoria_array["nome"];
+            $categoria->categoriaId = $row["categoria_id"];
+            $categoria->nome = $row["nome"];
 
             array_push($categorias, $categoria);
         }

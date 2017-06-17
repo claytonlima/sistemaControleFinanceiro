@@ -1,26 +1,22 @@
 <?php
-require_once(__DIR__."/../config/database/conexao.php");
 
 class UsuarioDao
 {
-    private $conexao;
-
-    function __construct($conexao)
+   public function listaUsuarios()
     {
-        $this->conexao = $conexao;
-    }
+        $pdo = Conexao::getInstance();
 
-    public function listaUsuarios()
-    {
-        $usuarios = [];
         $query = "SELECT * FROM usuarios";
+        $result = $pdo->query($query);
+        $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
 
-        $resultado = mysqli_query($this->conexao, $query);
-        while($usuario_array = mysqli_fetch_assoc($resultado))
+        $usuarios  = [];
+
+        foreach($rows as $row)
         {
             $user = new Usuario();
-            $user->usuarioId = $usuario_array["usuario_id"];
-            $user->nome      = $usuario_array["nome"];
+            $user->usuarioId = $row["usuario_id"];
+            $user->nome      = $row["nome"];
 
             array_push($usuarios, $user);
         }
@@ -29,13 +25,18 @@ class UsuarioDao
     }
 
     public function buscaUsuario(Usuario $user){
-        $user->email = mysqli_real_escape_string($this->conexao, $user->email);
-        $user->senha = mysqli_real_escape_string($this->conexao, $user->senha);
+        $pdo = Conexao::getInstance();
 
-        $user->senha = md5($user->senha);
-        $query = "SELECT email, senha FROM usuarios WHERE email='{$user->email}' AND senha='{$user->senha}'";
-        $resultado = mysqli_query($this->conexao, $query);
-        $user = mysqli_fetch_assoc($resultado);
+        $query = "SELECT email, senha FROM usuarios WHERE email=:email AND senha=:senha";
+        $sth = $pdo->prepare($query);
+        $sth->execute(array
+                           (":email" => $user->email,
+                            ":senha"=> md5($user->senha)
+                           )
+                     );
+
+        $user = $sth->fetch(\PDO::FETCH_ASSOC);
+
         return $user;
     }
 }

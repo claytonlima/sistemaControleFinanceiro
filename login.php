@@ -1,4 +1,3 @@
-<?php require_once("config/database/conexao.php"); ?>
 <?php require_once("cabecalho.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 <?php require_once("class/Usuario.php"); ?>
@@ -9,7 +8,7 @@ $user = new Usuario();
 $user->email = $_POST['email'];
 $user->senha = $_POST['password'];
 
-$usuarioDao = new UsuarioDao($conexao);
+$usuarioDao = new UsuarioDao();
 $user = $usuarioDao->buscaUsuario($user);
 
 if($user != null){

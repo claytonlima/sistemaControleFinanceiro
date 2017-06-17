@@ -1,15 +1,12 @@
 <?php require_once("cabecalho.php"); ?>
-<?php require_once("model/categoria/categoria.php"); ?>
-<?php require_once("model/conta/conta.php"); ?>
-<?php require_once("model/usuario/usuario.php"); ?>
 <?php require_once("functions/usuario/logica-usuario.php"); ?>
 
 <?php 
 verificaUsuarioLogado();
 
-$categorias = listaCategorias($conexao); ?>
+$categorias = listaCategorias(); ?>
 
-<?php $usuarios = listaUsuarios($conexao); ?>
+<?php $usuarios = listaUsuarios(); ?>
 
 <?php
 

@@ -8,15 +8,14 @@ $conta = array("nome" => "", "preco" => "", "data_compra" => "", "descricao" => 
 ?>
 
 <?php require_once("cabecalho.php"); ?>
-<?php require_once("model/categoria/categoria.php"); ?>
-<?php require_once("model/usuario/usuario.php"); ?>
-
 <?php
-$categoriaDao = new CategoriaDao($conexao);
+
+$categoriaDao = new CategoriaDao();
 $categorias = $categoriaDao->listaCategorias(); ?>
 
 <?php
-$usuarioDao = new UsuarioDao($conexao);
+
+$usuarioDao = new UsuarioDao();
 $usuarios = $usuarioDao->listaUsuarios(); ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

@@ -1,5 +1,4 @@
-<?php require_once(__DIR__."/Conexao.php");
-
+<?php
 
 class ContaDao
 {
@@ -19,9 +18,11 @@ class ContaDao
 
     public function listaContas()
     {
-        $contas = [];
-        $query = "SELECT c.*, cat.nome AS categoria, u.nome AS usuario FROM contas AS c INNER JOIN categorias AS cat ON (cat.categoria_id = c.categoria_id) INNER JOIN usuarios AS u ON (u.usuario_id = c.usuario_id)";
         $pdo = Conexao::getInstance();
+
+        $contas = [];
+
+        $query = "SELECT c.*, cat.nome AS categoria, u.nome AS usuario FROM contas AS c INNER JOIN categorias AS cat ON (cat.categoria_id = c.categoria_id) INNER JOIN usuarios AS u ON (u.usuario_id = c.usuario_id)";
         $result = $pdo->query($query);
         $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -68,18 +69,20 @@ class ContaDao
 
     public function alteraConta(Conta $conta)
     {
-        $contaId = mysqli_real_escape_string($this->conexao, $conta->getContaId());
-        $nome = mysqli_real_escape_string($this->conexao, $conta->getPreco());
-        $preco = mysqli_real_escape_string($this->conexao, $conta->getPreco());
-        $descricao = mysqli_real_escape_string($this->conexao, $conta->getDescricao());
+        $pdo = Conexao::getInstance();
 
-        $categoria = mysqli_real_escape_string($this->conexao, $conta->getCategoria()->categoriaId);
-        $usuario = mysqli_real_escape_string($this->conexao, $conta->getUsuario()->usuarioId);
-        $dataCompra = mysqli_real_escape_string($this->conexao, $conta->getDataCompra());
+        $query = "UPDATE contas SET nome=:nome, preco=:preco, descricao=:descricao, categoria_id=:categoria, usuario_id=:usuario, data_compra=:dataCompra WHERE id =:contaId";
+        $sth = $pdo->prepare($query);
+        $sth->bindParam("contaId", $conta->getContaId());
+        $sth->bindParam(":nome", $conta->getNome());
+        $sth->bindParam(":preco", $conta->getPreco());
+        $sth->bindParam(":descricao", $conta->getDescricao());
+        $sth->bindParam(":dataCompra", $conta->getDataCompra());
+        $sth->bindParam(":categoria", $conta->getCategoria()->categoriaId);
+        $sth->bindParam(":usuario", $conta->getUsuario()->usuarioId);
 
-        $query = "UPDATE contas SET nome='{$nome}', preco={$preco}, descricao='{$descricao}', categoria_id={$categoria}, usuario_id={$usuario}, data_compra='{$dataCompra}' WHERE id = '{$contaId}'";
+        return $sth->execute();
 
-        return mysqli_query($this->conexao, $query);
     }
 
     public function removeConta($contaId)

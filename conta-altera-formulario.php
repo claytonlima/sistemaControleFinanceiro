@@ -1,16 +1,12 @@
 <?php include("cabecalho.php"); ?>
-<?php include("model/categoria/categoria.php"); ?>
-<?php include("model/conta/conta.php"); ?>
-<?php include("model/usuario/usuario.php"); ?>
-
 <?php
-$contaDao = new ContaDao($conexao);
+$contaDao = new ContaDao();
 $conta = $contaDao->buscaConta(trim($_GET['id']));
 
-$categoriaDao = new CategoriaDao($conexao);
+$categoriaDao = new CategoriaDao();
 $categorias = $categoriaDao->listaCategorias();
 
-$usuarioDao = new UsuarioDao($conexao);
+$usuarioDao = new UsuarioDao();
 $usuarios = $usuarioDao->listaUsuarios();
 ?>
 

@@ -9,7 +9,7 @@ class Conta{
     public  $categoria;
     public  $usuario;
 
-    function __construct($nome, $preco, $dataCompra, $descricao, Categoria $categoria, Usuario $usuario){
+    public function __construct($nome, $preco, $dataCompra, $descricao, Categoria $categoria, Usuario $usuario){
         $this->nome = $nome;
         $this->preco = (double)$preco;
         $this->dataCompra = $dataCompra;

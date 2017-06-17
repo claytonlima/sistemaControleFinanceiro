@@ -16,12 +16,12 @@ $dataCompra = trim($_POST['dataCompra']);
 $conta = new Conta($nome, $preco, $dataCompra, $descricao, $categoria, $usuario);
 $conta->setContaId($contaId);
 
-$contaDao = new ContaDao($conexao);
+$contaDao = new ContaDao();
 
 if($contaDao->alteraConta($conta)){?>
     <p class="text-success">O conta <?php echo $conta->getNome();?>, <?php echo $conta->getPreco(); ?> foi alterado.</p>
-<?php } else { 
-    $msg = mysqli_error($conexao);
+<?php } else {
+    $msg = mysqli_error();
 ?>
     <p class="text-danger">O conta <?php echo $conta->getNome(); ?> não foi alterado: <?php echo $msg;?></p>
 <?php 
